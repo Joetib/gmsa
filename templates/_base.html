@@ -1,79 +1,228 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-<title>{% block title %}DjangoX{% endblock title %}</title>
-<meta name="description" content="A framework for launching new Django projects quickly.">
-<meta name="author" content="">
-<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-{% block css %}
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Title -->
+    <title> :: GMSA :: </title>
 
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
-{% endblock %}
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/1.png' %}">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
 </head>
 
 <body>
-  <main role="main">
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-      <h5 class="my-0 mr-md-auto font-weight-normal">
-        <a href="{% url 'home' %}">DjangoX</a>
-      </h5>
-      <a class="p-2 text-dark" href="{% url 'about' %}">About</a>
-      <nav class="my-2 my-md-0 mr-md-3">
-        {% if user.is_authenticated %}
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ user.email }}
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
-              <a class="dropdown-item" href="{% url 'account_change_password' %}">Change password</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
+    <!-- ##### Preloader ##### -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- Top Header Area -->
+        <div class="top-header">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100">
+                        <div class="header-content h-100 d-flex align-items-center justify-content-between">
+                            <div class="academy-logo">
+                                <a href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                            </div>
+                            <div class="login-content">
+                                <a href="#">Register / Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </li>
-        </ul>
-        {% else %}
-        <form class="form-inline ml-auto">
-          <a href="{% url 'account_login' %}" class="btn btn-outline-secondary">Log in</a>
-          <a href="{% url 'account_signup' %}" class="btn btn-primary ml-2">Sign up</a>
-        </form>
-        {% endif %}
-      </nav>
-    </div>
-  </main>
+        </div>
 
-  <div class="container">
+        <!-- Navbar Area -->
+        <div class="academy-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="academyNav">
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- close btn -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="about-us.html">About Us</a></li>
+                                            <li><a href="course.html">Madarasah</a></li>
+                                            <li><a href="News.html">News</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Mega Menu</a>
+                                        <div class="megamenu">
+                                            <ul class="single-mega cn-col-4">
+                                                <li><a href="#">Home</a></li>
+                                                <li><a href="#">Services </a></li>
+                                                <li><a href="#">Accordions </a></li>
+                                                <li><a href="#">Menu ideas</a></li>
+                                                <li><a href="#">Students Gallery</a></li>
+                                            </ul>
+                                          
+                                            <div class="single-mega cn-col-4">
+                                                <img src="{% static 'img/bg-img/bg-1.png' %}" alt="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li><a href="course.html">Madarasah</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+
+                        <!-- Calling Info -->
+                        <div class="calling-info">
+                            <div class="call-center">
+                                <a href="tel:+233546383716"><i class="icon-telephone-2"></i> <span>(+233) 54 638 3716</span></a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Content block start ####### -->
     {% block content %}
-      <p>Default content...</p>
     {% endblock content %}
-  </div>
+    <!-- ##### Content block end ####### -->
 
-  <footer class="footer">
-    <div class="container">
-      <span class="text-muted">Footer...</span>
-    </div>
+
+     <!-- ##### Footer Area Start ##### -->
+     <footer class="footer-area">
+      <div class="main-footer-area section-padding-100-0">
+          <div class="container">
+              <div class="row">
+                  <!-- Footer Widget Area -->
+                  <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="footer-widget mb-100">
+                          <div class="widget-title">
+                              <a href="#"><img src="{% static 'img/core-img/logo2.png' %}" alt=""></a>
+                          </div>
+                          <p>Cras vitae turpis lacinia, lacinia lacus non, fermentum nisi. Donec et sollicitudin est, in euismod erat. Ut at erat et arcu pulvinar cursus a eget.</p>
+                          <div class="footer-social-info">
+                              <a href="#"><i class="fa fa-facebook"></i></a>
+                              <a href="#"><i class="fa fa-twitter"></i></a>
+                              <a href="#"><i class="fa fa-whatsapp"></i></a>
+                              <a href="#"><i class="fa fa-youtube"></i></a>
+                              <a href="#"><i class="fa fa-instagram"></i></a>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Footer Widget Area -->
+                  <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="footer-widget mb-100">
+                          <div class="widget-title">
+                              <h6>Usefull Links</h6>
+                          </div>
+                          <nav>
+                              <ul class="useful-links">
+                                  <li><a href="#">Home</a></li>
+                                  <li><a href="#">Services &amp; Features</a></li>
+                                  <li><a href="#">Accordions and tabs</a></li>
+                                  <li><a href="#">Menu ideas</a></li>
+                              </ul>
+                          </nav>
+                      </div>
+                  </div>
+                  <!-- Footer Widget Area -->
+                  <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="footer-widget mb-100">
+                          <div class="widget-title">
+                              <h6>Gallery</h6>
+                          </div>
+                          <div class="gallery-list d-flex justify-content-between flex-wrap">
+                              <a href="{% static 'img/bg-img/gallery1.jpg' %}" class="gallery-img" title="Gallery Image 1"><img src="{% static 'img/bg-img/gallery1.jpg' %}" alt=""></a>
+                              <a href="{% static 'img/bg-img/gallery2.jpg' %}" class="gallery-img" title="Gallery Image 2"><img src="{% static 'img/bg-img/gallery2.jpg' %}" alt=""></a>
+                              <a href="{% static 'img/bg-img/gallery3.jpg' %}" class="gallery-img" title="Gallery Image 3"><img src="{% static 'img/bg-img/gallery3.jpg' %}" alt=""></a>
+                              <a href="{% static 'img/bg-img/gallery4.jpg' %}" class="gallery-img" title="Gallery Image 4"><img src="{% static 'img/bg-img/gallery4.jpg' %}" alt=""></a>
+                              <a href="{% static 'img/bg-img/gallery5.jpg' %}" class="gallery-img" title="Gallery Image 5"><img src="{% static 'img/bg-img/gallery5.jpg' %}" alt=""></a>
+                              <a href="{% static 'img/bg-img/gallery6.jpg' %}" class="gallery-img" title="Gallery Image 6"><img src="{% static 'img/bg-img/gallery6.jpg' %}" alt=""></a>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Footer Widget Area -->
+                  <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="footer-widget mb-100">
+                          <div class="widget-title">
+                              <h6>Contact</h6>
+                          </div>
+                          <div class="single-contact d-flex mb-30">
+                              <i class="icon-placeholder"></i>
+                              <p>University of cape coast, cape coast, Ghana</p>
+                          </div>
+                          <div class="single-contact d-flex mb-30">
+                              <i class="icon-telephone-1"></i>
+                              <p>Main: 203-808-8613 <br>Office: 203-808-8648</p>
+                          </div>
+                          <div class="single-contact d-flex">
+                              <i class="icon-contract"></i>
+                              <p>gmsaucc18e@gmail.com</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="bottom-footer-area">
+          <div class="container">
+              <div class="row">
+                  <div class="col-12">
+                      <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </i> UCC GMSA </a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                  </div>
+              </div>
+          </div>
+      </div>
   </footer>
+  <!-- ##### Footer Area Start ##### -->
 
-
-
-  {% block javascript %}
-  <!-- Bootstrap JavaScript -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-  <!-- 3rd party JavaScript -->
-
-  <!-- Project JS -->
-  <script src="{% static 'js/base.js' %}"></script>
-
-  {% endblock javascript %}
-
+  <!-- ##### All Javascript Script ##### -->
+  <!-- jQuery-2.2.4 js -->
+  <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+  <!-- Popper js -->
+  <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+  <!-- Bootstrap js -->
+  <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+  <!-- All Plugins js -->
+  <script src="{% static 'js/plugins/plugins.js' %}"></script>
+  <!-- Active js -->
+  <script src="{% static 'js/active.js' %}"></script>
 </body>
+
 </html>
