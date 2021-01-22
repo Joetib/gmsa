@@ -23,7 +23,7 @@
                 </li>
                 <li class="bg-light p-4 d-flex justify-content-between align-items-center border-top">
                     <span>To :</span> 
-                    <span>{% if executive.is_active %}{{ executive.date_ended }} {% else %} Date {% endif %}</span>
+                    <span>{% if executive.is_active %}Date{% else %} {{ executive.date_ended }}  {% endif %}</span>
                 </li>
             </ul>
             <h4 class=" pt-5 p-3 border-bottom ">About {{ executive.name }}</h4>
