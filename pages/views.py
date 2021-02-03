@@ -134,3 +134,6 @@ class BusinessDetailView(DetailView):
     model = models.Business
     template_name = "pages/business_detail.html"
     context_object_name = "business"
+
+class HistoryView(TemplateView):
+    template_name = "pages/history.html"

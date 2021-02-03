@@ -50,17 +50,21 @@
                     <div class="row no-gutters">
                         <!-- Single Top Features -->
                         <div class="col-12 col-md-4">
-                            <div class="single-top-features d-flex align-items-center justify-content-center">
-                                <i class="icon-agenda-1"></i>
-                                <h5>PDF for most Courses</h5>
-                            </div>
+                            <a href="{% url 'programme-list' %}">
+                                <div class="single-top-features d-flex align-items-center justify-content-center">
+                                    <i class="icon-agenda-1"></i>
+                                    <h5>PDF for most Courses</h5>
+                                </div>
+                            </a>
                         </div>
                         <!-- Single Top Features -->
                         <div class="col-12 col-md-4">
-                            <div class="single-top-features d-flex align-items-center justify-content-center">
-                                <i class="icon-assistance"></i>
-                                <h5>UCC GMSA History</h5>
-                            </div>
+                            <a href="{% url 'history' %}">
+                                <div class="single-top-features d-flex align-items-center justify-content-center">
+                                    <i class="icon-assistance"></i>
+                                    <h5>UCC GMSA History</h5>
+                                </div>
+                            </a>
                         </div>
                         <!-- Single Top Features -->
                         <div class="col-12 col-md-4">
@@ -85,15 +89,16 @@
             <div class="col-12 col-sm-6 col-lg-4">
                 <a href="{% url 'business-list' %}">
 
-                <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="course-icon">
-                        <i class="icon-id-card"></i>
+                    <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp"
+                        data-wow-delay="300ms">
+                        <div class="course-icon">
+                            <i class="icon-id-card"></i>
+                        </div>
+                        <div class="course-content">
+                            <h4>Association Business</h4>
+                            <p>Cras vitae turpis lacinia, lacinia la cus non, fermentum nisi.</p>
+                        </div>
                     </div>
-                    <div class="course-content">
-                        <h4>Association Business</h4>
-                        <p>Cras vitae turpis lacinia, lacinia la cus non, fermentum nisi.</p>
-                    </div>
-                </div>
                 </a>
             </div>
             <!-- Single Course Area -->
@@ -232,7 +237,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="">
-                    <a href="#"><img class="w-100 img-fluid img-responsive" src="{% static 'img\core-img\icons1.jpg' %}" alt=""></a>
+                    <a href="#"><img class="w-100 img-fluid img-responsive" src="{% static 'img\core-img\icons1.jpg' %}"
+                            alt=""></a>
                 </div>
             </div>
         </div>

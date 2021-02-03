@@ -14,6 +14,7 @@ class Configuration(models.Model):
     office_phone_number = models.CharField(max_length=13)
     email_address = models.EmailField()
     about = models.TextField()
+    history = models.TextField()
 
     # social links
     whatsapp_link = models.URLField(blank=True)
