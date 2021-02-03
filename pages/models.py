@@ -3,7 +3,8 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.contrib.contenttypes.fields  import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
-from django.urls import reverse_lazy
+from django.utils.text import slugify
+
 User = get_user_model()
 # Create your models here.
 
@@ -221,3 +222,48 @@ class Madarasah(models.Model):
     
     def __str__(self) -> str:
         return self.title
+
+
+class Business(models.Model):
+    title = models.CharField(max_length=150)
+    description = models.TextField()
+    phone_number = models.CharField(max_length=13)
+    banner = models.ImageField(upload_to="business/banner/%Y/%m/")
+    slug = models.SlugField(blank=True)
+    date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("title", "date")
+    
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(f"{self.title} {self.pk}")
+            super().save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        return reverse("business-detail", kwargs={"slug": self.slug})
+    
+class Product(models.Model):
+    business = models.ForeignKey(Business, related_name="products", on_delete=models.CASCADE)
+    title = models.CharField(max_length=150)
+    description = models.TextField(max_length=30)
+    slug = models.SlugField(blank=True)
+    price = models.DecimalField(decimal_places=2, max_digits=10)
+    picture = models.ImageField(upload_to="products/%Y/%m/")
+    date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("title", "date")
+    
+    def __str__(self):
+        return self.title
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(f"{self.title} {self.pk}")
+            super().save(*args, **kwargs)

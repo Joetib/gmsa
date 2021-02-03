@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import ContactView, EventListView,EventDetailView, ExecutiveDetailView, ExecutiveListView, HomePageView, AboutPageView, MadarasahListView, ProgrammeDetailView, ProgrammeListView, SocialLinksView, upload_event_images
+from .views import BusinessDetailView, BusinessListView, ContactView, EventListView,EventDetailView, ExecutiveDetailView, ExecutiveListView, HomePageView, AboutPageView, MadarasahListView, ProgrammeDetailView, ProgrammeListView, SocialLinksView, upload_event_images
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
@@ -15,4 +15,7 @@ urlpatterns = [
     path("social-links/", SocialLinksView.as_view(), name="social-links"),
     path("contact-us/", ContactView.as_view(), name="contact"),
     path("madarasah/", MadarasahListView.as_view(), name="madarasah-list"),
+
+    path("business/", BusinessListView.as_view(), name="business-list"),
+    path("business/<slug:slug>/", BusinessDetailView.as_view(), name="business-detail"),
 ]

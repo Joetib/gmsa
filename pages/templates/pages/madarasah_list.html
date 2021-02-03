@@ -10,7 +10,7 @@
                 <h3>Madarasah</h3>
                 <div class="d-flex flex-wrap align-items-center justify-content-center">
                     {% for category_item in categories %}
-                    <a href="{{ category_item.get_absolute_url }}" class="{% if category_item == category %}bg-warning{% else %}bg-light{% endif %} p-3 m-3 rounded">{{ category_item }}</a>
+                    <a href="{{ category_item.get_absolute_url }}" class="{% if category_item == category %}bg-warning{% else %}bg-light{% endif %} p-3 m-2 my-1 rounded">{{ category_item }}</a>
                     {% endfor %}
                 </div>
                 <div class="col-12">

@@ -83,15 +83,18 @@
         <div class="row">
             <!-- Single Course Area -->
             <div class="col-12 col-sm-6 col-lg-4">
+                <a href="{% url 'business-list' %}">
+
                 <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="300ms">
                     <div class="course-icon">
                         <i class="icon-id-card"></i>
                     </div>
                     <div class="course-content">
-                        <h4>School Business</h4>
+                        <h4>Association Business</h4>
                         <p>Cras vitae turpis lacinia, lacinia la cus non, fermentum nisi.</p>
                     </div>
                 </div>
+                </a>
             </div>
             <!-- Single Course Area -->
             <div class="col-12 col-sm-6 col-lg-4">
@@ -212,6 +215,10 @@
 
             {% for executive in executives %}
             {% include '_partials/_executive_card.html' %}
+            {% empty %}
+            <div class="col-12 text-center text-danger py-3">
+                <p>Sorry there are no executives uploaded yet.</p>
+            </div>
             {% endfor %}
 
         </div>

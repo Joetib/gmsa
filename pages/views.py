@@ -120,6 +120,17 @@ class MadarasahListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data()
         context["category"] = self.category
-        context["search"] = self.search_query
+        context["search"] = self.search_query or ""
         context["categories"] = models.MadarasahCategory.objects.all()
         return context
+
+
+class BusinessListView(ListView):
+    model = models.Business
+    context_object_name= "businesses"
+    template_name = "pages/business_list.html"
+
+class BusinessDetailView(DetailView):
+    model = models.Business
+    template_name = "pages/business_detail.html"
+    context_object_name = "business"
