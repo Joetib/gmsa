@@ -1,7 +1,7 @@
 from typing import Any, Mapping, Optional
 from django import forms
 from django.core.files.base import File
-from .models import Image
+from .models import ContactMessage, Image
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Fieldset, Layout, Submit, Row, Column
@@ -27,4 +27,9 @@ class ImageUploadForm(forms.ModelForm):
                 Column("description", css_class="col-12 col-sm-6")
             )
         )
-        
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactMessage
+        fields = ("name", 'email', "message")

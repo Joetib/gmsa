@@ -4,6 +4,8 @@ from django.http.response import HttpResponse
 from typing import Dict, Any
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.contrib import messages
 from . import forms
 from . import models
 
@@ -81,3 +83,15 @@ def upload_event_images(request: HttpRequest, pk:int) -> HttpRequest:
 
 class SocialLinksView(TemplateView):
     template_name = "pages/social_links.html"        
+
+class ContactView(TemplateView):
+    template_name = "pages/contact.html"
+
+    def post(self, request, *args, **kwargs):
+        contact_form = forms.ContactForm(request.POST)
+        if contact_form.is_valid():
+            contact = contact_form.save()
+            messages.success(request, "Your input has been recorded")
+        else:
+            messages.error(request, "Sorry there was an error in your form. Please fix and try again.")
+        return self.get(request, *args, **kwargs)

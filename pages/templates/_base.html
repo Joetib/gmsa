@@ -76,7 +76,7 @@
                                     <li><a href="{% url 'about' %}">About Us</a></li>
                                     <li><a href="course.html">Madarasah</a></li>
                                     <li><a href="{% url 'programme-list' %}">Academic Materials</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -110,9 +110,10 @@
                   <div class="col-12 col-sm-6 col-lg-3">
                       <div class="footer-widget mb-100">
                           <div class="widget-title">
-                              <a href="#"><img src="{% static 'img/core-img/logo1.png' %}" alt=""></a>
+                              <h6>About Us</h6>
                           </div>
                           <p>{{ config.about|truncatechars:200}}</p>
+                          <a class="text-success" href="{% url 'about' %}">Read more...</a>
                           <div class="footer-social-info">
                               <a href="#"><i class="fa fa-facebook"></i></a>
                               <a href="#"><i class="fa fa-twitter"></i></a>
