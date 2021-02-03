@@ -95,3 +95,31 @@ class ContactView(TemplateView):
         else:
             messages.error(request, "Sorry there was an error in your form. Please fix and try again.")
         return self.get(request, *args, **kwargs)
+
+class MadarasahListView(ListView):
+    model = models.Madarasah
+    queryset  = models.Madarasah.objects.all()
+    category = None
+    search_query = None
+    template_name = "pages/madarasah_list.html"
+    context_object_name = "madarasah_set"
+
+    def get_queryset(self):
+        category_pk = self.request.GET.get('category')
+        if category_pk:
+            self.category = get_object_or_404(models.MadarasahCategory, pk=int(category_pk))
+            queryset = models.Madarasah.objects.filter(category=(self.category))
+        else:
+            queryset = models.Madarasah.objects.all()
+        self.search_query = self.request.GET.get("search")
+        if self.search_query:
+            queryset = queryset.filter(title__icontains=self.search_query)
+        return queryset
+
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data()
+        context["category"] = self.category
+        context["search"] = self.search_query
+        context["categories"] = models.MadarasahCategory.objects.all()
+        return context

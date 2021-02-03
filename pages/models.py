@@ -196,6 +196,28 @@ class ContactMessage(models.Model):
     def __str__(self):
         return self.name + self.message[:20]
     
+class MadarasahCategory(models.Model):
+    name = models.CharField(max_length=60)
+
+    class Meta:
+        ordering = ("name",)
+    
+    def __str__(self) -> str:
+        return self.name
+    
+    def get_absolute_url(self) -> str:
+        return f'{reverse("madarasah-list")}?category={self.pk}'
 
 class Madarasah(models.Model):
-    pass
+    category = models.ForeignKey(MadarasahCategory, related_name="madarasah_set", on_delete=models.CASCADE)
+    title = models.CharField(max_length=150)
+    description = models.TextField(blank=True)
+    file = models.FileField(upload_to="madarasah/%Y/%m/")
+
+    date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("date",)
+    
+    def __str__(self) -> str:
+        return self.title

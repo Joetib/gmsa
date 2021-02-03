@@ -74,7 +74,7 @@
                                     
                                     
                                     <li><a href="{% url 'about' %}">About Us</a></li>
-                                    <li><a href="course.html">Madarasah</a></li>
+                                    <li><a href="{% url 'madarasah-list' %}">Madarasah</a></li>
                                     <li><a href="{% url 'programme-list' %}">Academic Materials</a></li>
                                     <li><a href="{% url 'contact' %}">Contact</a></li>
                                 </ul>
@@ -201,6 +201,23 @@
   <!-- Active js -->
   <script src="{% static 'js/active.js' %}"></script>
   <script src="{% static 'js/base.js' %}"></script>
+  <script>
+    let togglers = document.getElementsByClassName("course-panel-show-toggle");
+    for (toggler of togglers) {
+        console.log("registering");
+        toggler.addEventListener("click", function (e) {
+            console.log('clicked');
+            console.log(this.dataset);
+            document.getElementById(this.dataset.target)?.classList.remove("d-none");
+        });
+    }
+    let closes = document.getElementsByClassName("close-toggle");
+    for (close of closes) {
+        close.addEventListener("click", function (e) {
+            document.getElementById(this.dataset.target)?.classList.add("d-none");
+        });
+    }
+</script>
 </body>
 
 </html>
