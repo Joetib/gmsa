@@ -22,15 +22,33 @@ class Configuration(models.Model):
     twitter_link = models.URLField(blank=True)
     youtube_link = models.URLField(blank=True)
     
+    def __str__(self):
+        return "Site Configuration"
+
     @classmethod
     def object(cls):
         return cls.objects.first()
+    
     
     def save(self, *args, **kwargs):
         self.pk = 1
         self.id = 1
         super().save(*args, **kwargs)
-        
+
+class Slider(models.Model):
+    banner = models.ImageField(upload_to="slider/%Y/%m/")
+    title = models.CharField(max_length=60)
+    sub_title = models.CharField(max_length=50)
+
+    date_created = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("-date_created",)
+
+    def __str__(self):
+        return self.title
+
+    
 class Image(models.Model):
     image = models.ImageField(upload_to="gallery/images/%Y/%m/")
     description = models.TextField(blank=True)

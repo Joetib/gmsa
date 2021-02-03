@@ -16,6 +16,7 @@ class HomePageView(TemplateView):
         context =  super().get_context_data(**kwargs)
         context['executives'] = models.Executive.objects.filter(is_active=True)
         context['upcoming_events'] = models.Event.objects.filter(is_upcoming=True)
+        context["sliders"] = models.Slider.objects.all()
         return context
 
 class AboutPageView(TemplateView):
