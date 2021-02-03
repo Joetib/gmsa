@@ -196,3 +196,6 @@ class ContactMessage(models.Model):
     def __str__(self):
         return self.name + self.message[:20]
     
+
+class Madarasah(models.Model):
+    pass
