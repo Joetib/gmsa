@@ -139,14 +139,22 @@
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="footer-widget mb-100">
                             <div class="widget-title">
-                                <h6>Usefull Links</h6>
+                                <h6>Useful Links</h6>
                             </div>
                             <nav>
                                 <ul class="useful-links">
                                     <li><a href="{% url 'home' %}">Home</a></li>
-                                    <li><a href="#">Services &amp; Features</a></li>
-                                    <li><a href="#">Accordions and tabs</a></li>
-                                    <li><a href="#">Menu ideas</a></li>
+
+
+                                    <li><a href="{% url 'madarasah-list' %}">Madarasah</a></li>
+                                    <li><a href="{% url 'project-list' %}">Projects</a></li>
+                                    <li><a href="{% url 'event-list' %}">Event</a></li>
+                                    <li><a href="{% url 'programme-list' %}">Academic Materials</a></li>
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                    <li><a href="{% url 'madarasah-list' %}">Madarasah</a></li>
+
+                                    <li><a href="{% url 'scholarship-list' %}">Scholarships</a></li>
                                 </ul>
                             </nav>
                         </div>
