@@ -21,11 +21,11 @@ class ImageUploadForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_tag = False
         self.helper.layout = Layout(
-            Row(
-                Column('image',Column(css_class="img-display row"), css_class="col-12 col-sm-6"),
+            
+                Column('image',Column(css_class="img-display row"), css_class="col-12"),
                 
-                Column("description", css_class="col-12 col-sm-6")
-            )
+                Column("description", css_class="col-12")
+            
         )
 
 

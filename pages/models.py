@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.contenttypes.fields  import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from django.utils.text import slugify
+from django.utils import timezone
 
 User = get_user_model()
 # Create your models here.
@@ -286,3 +287,55 @@ class Product(models.Model):
         if not self.slug:
             self.slug = slugify(f"{self.title} {self.pk}")
             super().save(*args, **kwargs)
+
+class Project(models.Model):
+    title = models.CharField(max_length=150)
+    description = models.TextField()
+    picture = models.ImageField(upload_to="projects/%Y/%m/")
+    slug = models.SlugField(blank=True)
+    date_started = models.DateTimeField()
+    date_ended = models.DateTimeField(blank=True)
+    completed = models.BooleanField(default=False)
+    images = GenericRelation(Image, related_query_name="project")
+    date_created = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("-date_created", "title")
+    
+    def __str__(self):
+        return self.title
+        
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(f"{self.title} {self.pk}")
+            super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("project-detail", kwargs={"slug": self.slug})
+
+
+class Scholarship(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+
+    application_link = models.URLField(blank=True)
+
+    end_date = models.DateField(blank=True)
+
+    date = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ("date", "title")
+    def __str__(self):
+        return self.title
+    
+    @property
+    def is_active(self):
+        if not self.end_date:
+            return True
+        return timezone.now() >= self.end_date
+    
+    def get_absolute_url(self):
+        return reverse("scholarship-detail", kwargs={"pk": self.pk})

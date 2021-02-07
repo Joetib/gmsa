@@ -45,8 +45,8 @@
         </div>
         {% endfor %}
         {% if request.user.is_superuser %}
-        <div class="col-12 bg-light">
-            <form class="p-5 image-form-section" method="POST" action="{% url 'upload-event-images' event.pk %}" enctype="multipart/form-data">
+        <div class="col-12 d-flex justify-content-center align-items-center ">
+            <form class="p-5 image-form-section bg-light" style="max-width: 500px;" method="POST" action="{% url 'upload-event-images' event.pk %}" enctype="multipart/form-data">
                 <h3>Add Images to upload</h3>
                 {% csrf_token %}
                 {% crispy image_form %}

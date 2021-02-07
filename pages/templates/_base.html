@@ -71,12 +71,21 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a href="{% url 'home' %}">Home</a></li>
-                                    
-                                    
-                                    <li><a href="{% url 'about' %}">About Us</a></li>
+
+
                                     <li><a href="{% url 'madarasah-list' %}">Madarasah</a></li>
+                                    <li><a href="{% url 'project-list' %}">Projects</a></li>
+                                    <li><a href="{% url 'event-list' %}">Event</a></li>
                                     <li><a href="{% url 'programme-list' %}">Academic Materials</a></li>
-                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                    <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{% url 'about' %}">About Us</a></li>
+                                            <li><a href="{% url 'contact' %}">Contact</a></li>
+                                            <li><a href="{% url 'madarasah-list' %}">Madarasah</a></li>
+
+                                            <li><a href="{% url 'scholarship-list' %}">Scholarships</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -85,7 +94,8 @@
                         <!-- Calling Info -->
                         <div class="calling-info">
                             <div class="call-center">
-                                <a href="tel:{{ config.main_phone_number }}"><i class="icon-telephone-2"></i> <span>{{ config.main_phone_number }}</span></a>
+                                <a href="tel:{{ config.main_phone_number }}"><i class="icon-telephone-2"></i> <span>{{
+                                        config.main_phone_number }}</span></a>
                             </div>
                         </div>
                     </nav>
@@ -101,123 +111,130 @@
     <!-- ##### Content block end ####### -->
 
 
-     <!-- ##### Footer Area Start ##### -->
-     <footer class="footer-area">
-      <div class="main-footer-area section-padding-100-0">
-          <div class="container">
-              <div class="row">
-                  <!-- Footer Widget Area -->
-                  <div class="col-12 col-sm-6 col-lg-3">
-                      <div class="footer-widget mb-100">
-                          <div class="widget-title">
-                              <h6>About Us</h6>
-                          </div>
-                          <p>{{ config.about|truncatechars:200}}</p>
-                          <a class="text-success" href="{% url 'about' %}">Read more...</a>
-                          <div class="footer-social-info">
-                              <a href="#"><i class="fa fa-facebook"></i></a>
-                              <a href="#"><i class="fa fa-twitter"></i></a>
-                              <a href="#"><i class="fa fa-whatsapp"></i></a>
-                              <a href="#"><i class="fa fa-youtube"></i></a>
-                              <a href="#"><i class="fa fa-instagram"></i></a>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Footer Widget Area -->
-                  <div class="col-12 col-sm-6 col-lg-3">
-                      <div class="footer-widget mb-100">
-                          <div class="widget-title">
-                              <h6>Usefull Links</h6>
-                          </div>
-                          <nav>
-                              <ul class="useful-links">
-                                  <li><a href="{% url 'home' %}">Home</a></li>
-                                  <li><a href="#">Services &amp; Features</a></li>
-                                  <li><a href="#">Accordions and tabs</a></li>
-                                  <li><a href="#">Menu ideas</a></li>
-                              </ul>
-                          </nav>
-                      </div>
-                  </div>
-                  <!-- Footer Widget Area -->
-                  <div class="col-12 col-sm-6 col-lg-3">
-                      <div class="footer-widget mb-100">
-                          <div class="widget-title">
-                              <h6>Gallery</h6>
-                          </div>
-                          <div class="gallery-list d-flex justify-content-between flex-wrap">
-                              {% for image in gallery_images %}
-                              <a href="{{ image.image.url }}" class="gallery-img" title="Gallery Image {{ image.id }}"><img style="object-fit:cover;width: 80px; height:80px;" src="{{ image.image.url }}" alt=""></a>
-                              {% endfor %}
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Footer Widget Area -->
-                  <div class="col-12 col-sm-6 col-lg-3">
-                      <div class="footer-widget mb-100">
-                          <div class="widget-title">
-                              <h6>Contact</h6>
-                          </div>
-                          <div class="single-contact d-flex mb-30">
-                              <i class="icon-placeholder"></i>
-                              <p>{{ config.location }}</p>
-                          </div>
-                          <div class="single-contact d-flex mb-30">
-                              <i class="icon-telephone-1"></i>
-                              <p>Main: {{ config.main_phone_number }} <br>Office: {{ config.office_phone_number }}</p>
-                          </div>
-                          <div class="single-contact d-flex">
-                              <i class="icon-contract"></i>
-                              <p>{{ config.email_address }}</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="bottom-footer-area">
-          <div class="container">
-              <div class="row">
-                  <div class="col-12">
-                      <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </i> UCC GMSA </a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </footer>
-  <!-- ##### Footer Area Start ##### -->
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <div class="main-footer-area section-padding-100-0">
+            <div class="container">
+                <div class="row">
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="footer-widget mb-100">
+                            <div class="widget-title">
+                                <h6>About Us</h6>
+                            </div>
+                            <p>{{ config.about|truncatechars:200}}</p>
+                            <a class="text-success" href="{% url 'about' %}">Read more...</a>
+                            <div class="footer-social-info">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-whatsapp"></i></a>
+                                <a href="#"><i class="fa fa-youtube"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="footer-widget mb-100">
+                            <div class="widget-title">
+                                <h6>Usefull Links</h6>
+                            </div>
+                            <nav>
+                                <ul class="useful-links">
+                                    <li><a href="{% url 'home' %}">Home</a></li>
+                                    <li><a href="#">Services &amp; Features</a></li>
+                                    <li><a href="#">Accordions and tabs</a></li>
+                                    <li><a href="#">Menu ideas</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="footer-widget mb-100">
+                            <div class="widget-title">
+                                <h6>Gallery</h6>
+                            </div>
+                            <div class="gallery-list d-flex justify-content-between flex-wrap">
+                                {% for image in gallery_images %}
+                                <a href="{{ image.image.url }}" class="gallery-img"
+                                    title="Gallery Image {{ image.id }}"><img
+                                        style="object-fit:cover;width: 80px; height:80px;" src="{{ image.image.url }}"
+                                        alt=""></a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer Widget Area -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="footer-widget mb-100">
+                            <div class="widget-title">
+                                <h6>Contact</h6>
+                            </div>
+                            <div class="single-contact d-flex mb-30">
+                                <i class="icon-placeholder"></i>
+                                <p>{{ config.location }}</p>
+                            </div>
+                            <div class="single-contact d-flex mb-30">
+                                <i class="icon-telephone-1"></i>
+                                <p>Main: {{ config.main_phone_number }} <br>Office: {{ config.office_phone_number }}</p>
+                            </div>
+                            <div class="single-contact d-flex">
+                                <i class="icon-contract"></i>
+                                <p>{{ config.email_address }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved </i> UCC GMSA
+                            </a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
 
-  <!-- ##### All Javascript Script ##### -->
-  <!-- jQuery-2.2.4 js -->
-  <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
-  <!-- Popper js -->
-  <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
-  <!-- Bootstrap js -->
-  <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-  <!-- All Plugins js -->
-  <script src="{% static 'js/plugins/plugins.js' %}"></script>
-  <!-- Active js -->
-  <script src="{% static 'js/active.js' %}"></script>
-  <script src="{% static 'js/base.js' %}"></script>
-  <script>
-    let togglers = document.getElementsByClassName("course-panel-show-toggle");
-    for (toggler of togglers) {
-        console.log("registering");
-        toggler.addEventListener("click", function (e) {
-            console.log('clicked');
-            console.log(this.dataset);
-            document.getElementById(this.dataset.target)?.classList.remove("d-none");
-        });
-    }
-    let closes = document.getElementsByClassName("close-toggle");
-    for (close of closes) {
-        close.addEventListener("click", function (e) {
-            document.getElementById(this.dataset.target)?.classList.add("d-none");
-        });
-    }
-</script>
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- All Plugins js -->
+    <script src="{% static 'js/plugins/plugins.js' %}"></script>
+    <!-- Active js -->
+    <script src="{% static 'js/active.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+    <script>
+        let togglers = document.getElementsByClassName("course-panel-show-toggle");
+        for (toggler of togglers) {
+            console.log("registering");
+            toggler.addEventListener("click", function (e) {
+                console.log('clicked');
+                console.log(this.dataset);
+                document.getElementById(this.dataset.target)?.classList.remove("d-none");
+            });
+        }
+        let closes = document.getElementsByClassName("close-toggle");
+        for (close of closes) {
+            close.addEventListener("click", function (e) {
+                document.getElementById(this.dataset.target)?.classList.add("d-none");
+            });
+        }
+    </script>
 </body>
 
 </html>

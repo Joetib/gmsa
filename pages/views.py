@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
+from django.utils import timezone
 from . import forms
 from . import models
 
@@ -138,3 +139,52 @@ class BusinessDetailView(DetailView):
 
 class HistoryView(TemplateView):
     template_name = "pages/history.html"
+
+class ProjectListView(ListView):
+    model = models.Project
+    context_object_name = "projects"
+    template_name = "pages/project_list.html"
+
+class ProjectDetailView(DetailView):
+    model = models.Project
+    context_object_name = "project"
+    template_name = "pages/project_detail.html"
+    image_form = None
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context =  super().get_context_data(**kwargs)
+        context["image_form"] = forms.ImageUploadForm()
+        return context
+
+    @method_decorator(login_required)
+    def post(self, request: HttpRequest, *args, **kwargs):
+        if not request.user.is_superuser:
+            return self.get(request, *args, **kwargs)
+        project = self.get_object()
+        if not project:
+            return self.get(request, *args, **kwargs)
+        if request.method == "POST":
+            self.image_form = forms.ImageUploadForm(request.POST, files=request.FILES)
+            if self.image_form.is_valid():
+                d = self.image_form.cleaned_data
+                for image in request.FILES.getlist('image'):
+                    models.Image.for_model(image=image, description=d["description"], content_object=project)
+        return self.get(request, *args, **kwargs)
+
+
+class ScholarshipListView(ListView):
+    model = models.Scholarship
+    template_name = "pages/scholarship_list.html"
+    context_object_name = "scholarships"
+
+    def get_queryset(self):
+        return models.Scholarship.objects.filter(end_date=None) | models.Scholarship.objects.filter(end_date__gte=timezone.now())
+
+class ScholarshipDetailView(DetailView):
+    model = models.Scholarship
+    context_object_name = "scholarship"
+    template_name = "pages/scholarship_detail.html"
+
+    def get_queryset(self):
+        return models.Scholarship.objects.filter(end_date=None) | models.Scholarship.objects.filter(end_date__gte=timezone.now())
+

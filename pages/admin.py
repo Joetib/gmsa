@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Business, ContactMessage, Event, Executive, ExecutiveRole, Configuration, Image, Madarasah, MadarasahCategory, Product, Programme, Course, Book, Slider
+from .models import Business, ContactMessage, Event, Executive, ExecutiveRole, Configuration, Image, Madarasah, MadarasahCategory, Product, Programme, Course, Book, Project, Scholarship, Slider
 
 admin.site.register(Executive)
 admin.site.register(ExecutiveRole)
@@ -20,3 +20,5 @@ admin.site.register(Madarasah)
 admin.site.register(Business)
 admin.site.register(Product)
 admin.site.register(Slider)
+admin.site.register(Project)
+admin.site.register(Scholarship)
