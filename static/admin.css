@@ -1,0 +1,30 @@
+*{
+    scrollbar-width: thin !important;
+    scrollbar-color: #888 red !important;
+    scroll-behavior: smooth;
+    scroll-padding: 1px !important;
+}
+#header,
+caption {
+    background: linear-gradient(to right, #61ba6d, #61ba65) !important;
+}
+
+.breadcrumbs {
+    background:  linear-gradient(to right, #61ba6d, #83c331) !important;
+    margin-bottom: 5px !important;
+    
+}
+#nav-sidebar{
+    padding-top: 20px !important;
+}
+
+#changelist-filter h2,
+input[type="submit"],
+button[type="submit"] {
+    background: rgb(87, 221, 159) !important;
+    color: white !important;
+}
+
+#head {
+    color: white !important;
+}

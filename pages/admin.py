@@ -3,6 +3,11 @@ from django.contrib import admin
 # Register your models here.
 from .models import Business, ContactMessage, Event, Executive, ExecutiveRole, Configuration, Image, Madarasah, MadarasahCategory, Product, Programme, Course, Book, Project, Scholarship, Slider
 
+admin.site.site_header = "GMSA(UCC)"
+admin.site.index_title = "Welcome to GMSA(UCC) Administration Panel"
+
+
+
 admin.site.register(Executive)
 admin.site.register(ExecutiveRole)
 admin.site.register(Configuration)
