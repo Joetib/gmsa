@@ -21,7 +21,10 @@ env = environ.Env(
     MEDIA_ROOT = (str, BASE_DIR / "media"),
     STATIC_ROOT = (str, BASE_DIR / "static_root"),
 )
-environ.Env.read_env(open(BASE_DIR/'.env'))
+try:
+    environ.Env.read_env(open(BASE_DIR/'.env'))
+except:
+    pass
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-SECRET_KEY
 SECRET_KEY = SECRET_KEY = env('SECRET_KEY')
@@ -168,7 +171,7 @@ MEDIA_ROOT = env('MEDIA_ROOT')
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 # http://whitenoise.evans.io/en/stable/django.html#add-compression-and-caching-support
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # DJANGO-CRISPY-FORMS CONFIGS
 # ------------------------------------------------------------------------------
