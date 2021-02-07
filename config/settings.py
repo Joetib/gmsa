@@ -13,10 +13,13 @@ env = environ.Env(
     ALLOWED_HOSTS = (list, ['*']),
     DB_PORT = (int, 3306),
     DB_HOST= (str, 'localhost'),
+    EMAIL_HOST=(str, "localhost"),
+    EMAIL_HOST_USER=(str, "username"),
+    EMAIL_HOST_PASSWORD=(str, "password"),
     EMAIL_PORT = (int, 587),
     EMAIL_USE_TLS = (bool, True),
     MEDIA_ROOT = (str, BASE_DIR / "media"),
-    STATIC_ROOT = (str, BASE_DIR / "static"),
+    STATIC_ROOT = (str, BASE_DIR / "static_root"),
 )
 environ.Env.read_env(open(BASE_DIR/'.env'))
 
