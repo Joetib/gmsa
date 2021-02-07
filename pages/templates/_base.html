@@ -4,13 +4,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="">
+    <meta name="description" content="{% block description %}GMSA (UCC) is a muslim student association at the University of Cape Coast, Ghana.{% endblock %}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title> :: GMSA :: </title>
+    <title> {% block title %}{% endblock title %} - GMSA(UCC) </title>
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'img/core-img/1.png' %}">
@@ -36,10 +36,10 @@
                     <div class="col-12 h-100">
                         <div class="header-content h-100 d-flex align-items-center justify-content-between">
                             <div class="academy-logo">
-                                <a href="index.html"><img src="{% static 'img/core-img/logo.png' %}" alt=""></a>
+                                <a href="{% url 'home' %}"><img src="{% static 'img/core-img/logo-main.png' %}" style="height: 70px;" alt=""></a>
                             </div>
                             <div class="login-content">
-                                <a href="#">Register / Login</a>
+                                <a href="mailto:{{ config.email_address }}">{{ config.email_address }}</a>
                             </div>
                         </div>
                     </div>
@@ -94,8 +94,10 @@
                         <!-- Calling Info -->
                         <div class="calling-info">
                             <div class="call-center">
-                                <a href="tel:{{ config.main_phone_number }}"><i class="icon-telephone-2"></i> <span>{{
-                                        config.main_phone_number }}</span></a>
+                                <a href="tel:{{ config.main_phone_number }}">
+                                    <i class="icon-telephone-2"></i> 
+                                    <span>{{ config.main_phone_number }}</span>
+                                </a>
                             </div>
                         </div>
                     </nav>

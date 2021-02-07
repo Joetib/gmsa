@@ -1,5 +1,11 @@
 {% extends '_base.html' %}
 
+
+{% block title %}Contact Us{% endblock title %}
+{% block description %}{{ config.location }}. Phone: {{ config.main_phone_number }}. 
+{{ config.about|truncatewords:60 }}{% endblock %}
+
+
 {% block content %}
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb-area bg-img mb-5 pb-5" style="background-image: url(img/bg-img/breadcumb.jpg);">

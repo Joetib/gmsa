@@ -1,6 +1,8 @@
 {% extends '_base.html' %}
 
 {% block title %}About page{% endblock %}
+{% block description %}{{ config.about | truncateword:70 }}{% endblock %}
+
 
 {% block content %}
 

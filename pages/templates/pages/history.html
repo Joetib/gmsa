@@ -1,6 +1,9 @@
 {% extends '_base.html' %}
 
-{% block title %}About page{% endblock %}
+
+{% block title %}Our History{% endblock title %}
+{% block description %}{{config.history | truncatewords:60 }}{% endblock %}
+
 
 {% block content %}
 

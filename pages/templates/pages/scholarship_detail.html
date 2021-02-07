@@ -2,6 +2,12 @@
 
 {% load crispy_forms_tags %}
 
+
+
+{% block title %}{{ scholarship.title }}{% endblock title %}
+{% block description %}{{ scholarship.description }}.{% endblock %}
+
+
 {% block content %}
 
 <div class="container pt-5 mt-5">

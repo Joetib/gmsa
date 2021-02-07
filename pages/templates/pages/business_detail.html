@@ -1,6 +1,10 @@
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 
+
+{% block title %}{{ business.title }}{% endblock title %}
+{% block description %}{{ business.description | truncatewords:60 }}{% endblock %}
+
 {% block content %}
 <div class="container-flui  mt-3">
     <div class=""
@@ -24,6 +28,7 @@
 <div class="container-fluid bg-light">
     <div class="container py-5 d-flex justify-content-center">
         <div class="col-12 text-center" style="max-width: 600px;">
+            <p>Phone: <a class="text-warning" href="tel:{{ business.phone_number }}">{{ business.phone_number }}</a></p>
             <div class="">{{ business.description }}</div>
         </div>
     </div>
