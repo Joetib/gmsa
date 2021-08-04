@@ -10,7 +10,7 @@
 <div class="container-flui  mt-3">
     <div class=""
         style="background: url('{{ event.picture.url }}'); background-size: cover; background-position: center;">
-        <div class=" px-4 py-5" style="background: rgba(0,0,0,0.3);">
+        <div class=" px-4 py-5" style="background: rgba(0,0,0,0.5);">
 
             <div class="row">
                 <div class="col-12 pt-5">
@@ -19,7 +19,7 @@
                         <h3 class="text-white">{{ event.name }}</h3>
                         <p class="text-white">{{ event.venue }}, {{ event.date }}</p>
                         {% if event.event_link %}
-                        <a class="btn btn-success" href="{{ event.event_link }}">{{ event.event_link_text }}</a>
+                        <a class="btn btn-success btn-lg" href="{{ event.event_link }}">{{ event.event_link_text }}</a>
                         {% endif %}
                         <p class="m-0 text-center text-warning">
                             {% if event.completed %}Completed{% else %}Upcomming{% endif %}
@@ -33,13 +33,20 @@
 <div class="container-fluid bg-light">
     <div class="container py-5">
         <div class="col-12">
-            {% if event.event_link %}
-            <a class="btn btn-success" href="{{ event.event_link }}">{{ event.event_link_text }}</a>
-            {% endif %}
+            <p class="text-center pb-4">
+
+                {% if event.event_link %}
+                <a class="btn btn-success" href="{{ event.event_link }}">{{ event.event_link_text }}</a>
+                {% endif %}
+            </p>
             <div class="">{{ event.description }}</div>
-            {% if event.event_link %}
-            <a class="btn btn-success" href="{{ event.event_link }}">{{ event.event_link_text }}</a>
-            {% endif %}
+            
+            <p class="text-center pt-4">
+
+                {% if event.event_link %}
+                <a class="btn btn-success" href="{{ event.event_link }}">{{ event.event_link_text }}</a>
+                {% endif %}
+            </p>
         </div>
     </div>
 </div>
