@@ -8,36 +8,47 @@
 
 {% block content %}
 <div class="container-flui  mt-3">
-    <div class="" style="background: url('{{ event.picture.url }}'); background-size: cover; background-position: center;">
+    <div class=""
+        style="background: url('{{ event.picture.url }}'); background-size: cover; background-position: center;">
         <div class=" px-4 py-5" style="background: rgba(0,0,0,0.3);">
 
-    <div class="row">
-        <div class="col-12 pt-5">
-            <div class="section-heading text-center mx-auto wow fadeInUp" data-wow-delay="300ms">
-                <span class="text-white">Meet</span>
-                <h3 class="text-white">{{ event.name }}</h3>
-                <p class="text-white">{{ event.venue }}, {{ event.date }}</p>
-                <p class="m-0 text-center text-warning" >
-                    {% if event.completed %}Completed{% else %}Upcomming{% endif %}
-                </p>
+            <div class="row">
+                <div class="col-12 pt-5">
+                    <div class="section-heading text-center mx-auto wow fadeInUp" data-wow-delay="300ms">
+                        <span class="text-white">Meet</span>
+                        <h3 class="text-white">{{ event.name }}</h3>
+                        <p class="text-white">{{ event.venue }}, {{ event.date }}</p>
+                        {% if event.event_link %}
+                        <a class="btn btn-success" href="{{ event.event_link }}">{{ event.event_link_text }}</a>
+                        {% endif %}
+                        <p class="m-0 text-center text-warning">
+                            {% if event.completed %}Completed{% else %}Upcomming{% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-</div>
     </div>
 </div>
 <div class="container-fluid bg-light">
-<div class="container py-5">
-    <div class="col-12">
-        <div class="">{{ event.description }}</div>
+    <div class="container py-5">
+        <div class="col-12">
+            {% if event.event_link %}
+            <a class="btn btn-success" href="{{ event.event_link }}">{{ event.event_link_text }}</a>
+            {% endif %}
+            <div class="">{{ event.description }}</div>
+            {% if event.event_link %}
+            <a class="btn btn-success" href="{{ event.event_link }}">{{ event.event_link_text }}</a>
+            {% endif %}
+        </div>
     </div>
-</div>
 </div>
 
 <div class="container py-5 mt-4">
     <div class="row">
         <div class="col-12">
-            <div class="section-heading text-center mx-auto wow fadeInUp" style="margin-bottom: 10px !important;" data-wow-delay="300ms">
+            <div class="section-heading text-center mx-auto wow fadeInUp" style="margin-bottom: 10px !important;"
+                data-wow-delay="300ms">
                 <span>Event</span>
                 <h3>Gallery</h3>
             </div>
@@ -51,7 +62,8 @@
         {% endfor %}
         {% if request.user.is_superuser %}
         <div class="col-12 d-flex justify-content-center align-items-center ">
-            <form class="p-5 image-form-section bg-light" style="max-width: 500px;" method="POST" action="{% url 'upload-event-images' event.pk %}" enctype="multipart/form-data">
+            <form class="p-5 image-form-section bg-light" style="max-width: 500px;" method="POST"
+                action="{% url 'upload-event-images' event.pk %}" enctype="multipart/form-data">
                 <h3>Add Images to upload</h3>
                 {% csrf_token %}
                 {% crispy image_form %}

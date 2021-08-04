@@ -107,6 +107,8 @@ class Event(models.Model):
     date = models.DateTimeField()
     venue = models.CharField(max_length=500)
     images = GenericRelation(Image, related_query_name="event")
+    event_link = models.URLField(blank=True)
+    event_link_text = models.CharField(max_length=30, blank=True)
     is_upcoming = models.BooleanField(default=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
